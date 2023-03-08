@@ -1,17 +1,13 @@
 <h2>Work Time</h2>
-<table>
+<table *ngIf="worktime">
   <thead>
   <tr>
-    <th>Login</th>
-    <th>Logout</th>
     <th>Working Time</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let row of worktime">
-    <td>{{ row.login }}</td>
-    <td>{{ row.logout }}</td>
-    <td>{{ row.workingtime }}</td>
+  <tr>
+    <td>{{ worktime.workingtime }}</td>
   </tr>
   </tbody>
 </table>

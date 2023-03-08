@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gvidfrontend';
+  employee: Observable<any> = this.httpclient.get("http://localhost:3000/employees");
+
+
+  constructor(private httpclient: HttpClient) {
+      this.employee.subscribe(value => {console.log(value)})
+  }
 }

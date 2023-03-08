@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input type="text" name="name" [(ngModel)]="name" required>
+  </label>
+  <br>
+  <label>
+    Password:
+    <input type="password" name="password" [(ngModel)]="password" required>
+  </label>
+  <br>
+  <button type="submit">Login</button>
+  <button *ngIf="loginSuccess"><a routerLink="/homepage">Go to login</a></button>
+</form>

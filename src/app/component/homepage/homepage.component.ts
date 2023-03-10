@@ -8,23 +8,28 @@ import { AuthService} from "../../auth.service";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  worktime: any;
-  username = '';
+  loading = true;
+  employee: { name: string; working_time: string; } | undefined;
 
-
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient,     private authService: AuthService
+  ) {}
 
   ngOnInit() {
-    const name = this.authService.getUsername();
-    console.log(name); // check the value of name in the console
-    if (name) {
-      const url = `http://localhost:3000/employees/${name}/workingtime`;
-      this.http.get<any>(url).subscribe(response => {
-        this.worktime = response;
-      }, error => {
-        console.error(error);
-      });
-    }
+    const name = 'John Doe'; // replace with the actual employee ID
+    this.http
+      .get<{ name: string; working_time: string }>(
+        `http://172.23.0.135:3000/workingtime/${name}`
+      )
+      .subscribe(
+        (data) => {
+          this.loading = false;
+          this.employee = data;
+        },
+        (error) => {
+          console.error(error);
+          this.loading = false;
+        }
+      );
   }
 
 }

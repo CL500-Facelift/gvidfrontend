@@ -1,13 +1,5 @@
-<h2>Work Time</h2>
-<table *ngIf="worktime">
-  <thead>
-  <tr>
-    <th>Working Time</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>{{ worktime.workingtime }}</td>
-  </tr>
-  </tbody>
-</table>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="!loading && !employee">Employee not found</div>
+<div *ngIf="!loading && employee">
+  {{ employee.name }} has worked for {{ employee.working_time }}
+</div>

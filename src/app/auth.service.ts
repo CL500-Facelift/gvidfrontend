@@ -4,9 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private username: string = '';
+  private username: string | undefined;
+  private employeeId: number | undefined;
 
-  constructor() { }
+  constructor() {}
 
   setUsername(username: string) {
     this.username = username;
@@ -14,5 +15,13 @@ export class AuthService {
 
   getUsername() {
     return this.username;
+  }
+
+  setEmployeeId(employeeId: number) {
+    this.employeeId = employeeId;
+  }
+
+  getEmployeeId() {
+    return this.employeeId;
   }
 }

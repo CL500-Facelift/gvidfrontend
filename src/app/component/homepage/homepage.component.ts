@@ -16,10 +16,10 @@ export class HomepageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const name = this.route.snapshot.paramMap.get('name'); // replace with the actual employee ID
+    const name = this.route.snapshot.paramMap.get('name');
     this.http
       .get<{ name: string; working_time: string }>(
-        `http://172.20.10.10:3000/workingtime/${name}`
+        `http://192.168.178.171:3000/workingtime/${name}`
       )
       .subscribe(
         (data) => {
@@ -32,5 +32,6 @@ export class HomepageComponent implements OnInit {
         }
       );
   }
+
 
 }

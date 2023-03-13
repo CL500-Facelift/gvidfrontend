@@ -27,12 +27,12 @@ export class LoginComponent{
   onSubmit() {
     const body = { name: this.name, password: this.password };
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    this.http.post<any>('http://172.20.10.10:3000/login', JSON.stringify(body), { headers })
+    this.http.post<any>('http://192.168.178.171:3000/login', JSON.stringify(body), { headers })
       .subscribe(value => {
         if (value.success) {
           this.loginSuccess = true;
           // If login is successful, set the workingTime property for the logged in user
-          this.http.post<any>(`http://172.20.10.10:3000/employees/${this.homepagelink}/workingtime`,JSON.stringify({}), { headers })
+          this.http.post<any>(`http://192.168.178.171:3000/employees/${this.name}/workingtime`,JSON.stringify({}), { headers })
             .subscribe((data) => {
               this.workingTime = data.workingTime;
               this.loginSuccess = true;
@@ -44,7 +44,8 @@ export class LoginComponent{
               this.authService.setUsername(this.name);
 
               console.log(this.name);
-              this.router.navigate([this.homepagelink]);
+              this.router.navigate([this.homepagelink, this.name]);
+
 
             });
           this.homepagelink += '/' + this.name;

@@ -9,13 +9,13 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'root1234',
-    database: 'gvidproject'
+    database: 'gvid'
 });
 
 // create express app
 const app = express();
 var corsOptions = {
-    origin: "http://172.20.10.10:4200"
+    origin: "http://192.168.178.171:4200"
 };
 
 app.use(cors(corsOptions));
@@ -63,7 +63,7 @@ app.post('/login', async (req, res) => {
 });
 
 // start the server
-app.listen(3000, '172.20.10.10' , () => {
+app.listen(3000, '192.168.178.171' , () => {
     console.log('Server started on port 3000.');
 });
 

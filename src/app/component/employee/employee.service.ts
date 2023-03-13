@@ -7,7 +7,7 @@ import { AuthService} from "../../auth.service";
   providedIn: 'root'
 })
 export class EmployeeService {
-  apiUrl = 'http://172.20.10.10:3000';
+  apiUrl = 'http://192.168.178.171:3000';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 

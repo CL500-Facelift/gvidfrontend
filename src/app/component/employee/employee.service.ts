@@ -7,7 +7,7 @@ import { AuthService} from "../../auth.service";
   providedIn: 'root'
 })
 export class EmployeeService {
-  apiUrl = 'http://172.23.0.135:3000';
+  apiUrl = 'http://172.20.10.10:3000';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -17,6 +17,6 @@ export class EmployeeService {
   }
 
   getUsername(): string {
-    return this.authService.getUsername();
+    return <string>this.authService.getUsername();
   }
 }

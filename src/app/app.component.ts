@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 })
 export class AppComponent {
   title = 'gvidfrontend';
-  employee: Observable<any> = this.httpclient.get("http://172.23.0.135:3000/employees");
+  employee: Observable<any> = this.httpclient.get("http://172.20.10.10:3000/employees");
 
 
   constructor(private httpclient: HttpClient) {

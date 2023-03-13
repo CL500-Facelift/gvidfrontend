@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()">
+<form class="login" (ngSubmit)="onSubmit()">
   <label>
     Name:
     <input type="text" name="name" [(ngModel)]="name" required>
@@ -10,5 +10,4 @@
   </label>
   <br>
   <button type="submit">Login</button>
-  <button *ngIf="loginSuccess"><a [routerLink]="homepagelink">Go to login</a></button>
 </form>

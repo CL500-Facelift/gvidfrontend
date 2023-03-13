@@ -6,7 +6,7 @@ import { AuthService } from "../../auth.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent{
   name: any;
@@ -30,11 +30,6 @@ export class LoginComponent{
     this.http.post<any>('http://192.168.178.171:3000/login', JSON.stringify(body), { headers })
       .subscribe(value => {
         if (value.success) {
-          this.loginSuccess = true;
-          // If login is successful, set the workingTime property for the logged in user
-          this.http.post<any>(`http://192.168.178.171:3000/employees/${this.name}/workingtime`,JSON.stringify({}), { headers })
-            .subscribe((data) => {
-              this.workingTime = data.workingTime;
               this.loginSuccess = true;
 
               // Set the employeeId property
@@ -47,7 +42,7 @@ export class LoginComponent{
               this.router.navigate([this.homepagelink, this.name]);
 
 
-            });
+
           this.homepagelink += '/' + this.name;
         } else {
           console.log(value.message);

@@ -39,6 +39,7 @@ export class LoginComponent{
               this.authService.setUsername(this.name);
 
               console.log(this.name);
+
               this.router.navigate([this.homepagelink, this.name]);
 
 

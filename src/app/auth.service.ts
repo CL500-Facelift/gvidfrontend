@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   private apiUrl = 'http://192.168.178.171:3000';
 
   private employeeId: number | undefined;
@@ -28,6 +31,7 @@ export class AuthService {
   getUsername() {
     return this.username;
   }
+
 
   startWorkingTime(username: string | undefined): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');

@@ -13,7 +13,9 @@ export class LoginComponent{
   password: any;
   loginSuccess: boolean = false;
   workingTime!: number;
-  employeeId: number = 1; // set the default employee ID here
+  employeeId: number = 1;
+
+  homepagelink: string =  '/homepage';// set the default employee ID here
 
 
   constructor(
@@ -25,12 +27,12 @@ export class LoginComponent{
   onSubmit() {
     const body = { name: this.name, password: this.password };
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    this.http.post<any>('http://172.23.0.135:3000/login', JSON.stringify(body), { headers })
+    this.http.post<any>('http://172.20.10.10:3000/login', JSON.stringify(body), { headers })
       .subscribe(value => {
         if (value.success) {
           this.loginSuccess = true;
           // If login is successful, set the workingTime property for the logged in user
-          this.http.post<any>(`http://172.23.0.135:3000/employees/${this.name}/workingtime`,JSON.stringify({}), { headers })
+          this.http.post<any>(`http://172.20.10.10:3000/employees/${this.homepagelink}/workingtime`,JSON.stringify({}), { headers })
             .subscribe((data) => {
               this.workingTime = data.workingTime;
               this.loginSuccess = true;
@@ -41,9 +43,11 @@ export class LoginComponent{
               // Set the username in the AuthService
               this.authService.setUsername(this.name);
 
-              // Navigate to the homepage with the employee ID as a parameter
-              this.router.navigate(['/homepage']);
+              console.log(this.name);
+              this.router.navigate([this.homepagelink]);
+
             });
+          this.homepagelink += '/' + this.name;
         } else {
           console.log(value.message);
         }
